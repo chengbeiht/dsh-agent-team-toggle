@@ -1,0 +1,73 @@
+{
+  "name": "dsh-agent-team-toggle",
+  "version": "1.0.0",
+  "description": "One-click Agent Teams on/off switch in the DSH sidebar footer, above the balance card.",
+  "type": "module",
+  "main": "lib/index.js",
+  "icon": "./icon.svg",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "locale",
+    "icon.svg",
+    "README.md",
+    "README.zh.md",
+    "LICENSE",
+    "test"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-api-remotes",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-sidebar"
+      ]
+    }
+  },
+  "dshhub": {
+    "schemaVersion": 1,
+    "displayName": "智能体团队开关",
+    "summary": "在左侧栏余额卡上方一键开启/关闭官方智能体团队（Agent Teams）；实时显示开关、忙碌、失败与需重启状态。",
+    "categories": [
+      "ui"
+    ],
+    "surfaces": [
+      "web"
+    ],
+    "capabilities": {
+      "provides": []
+    },
+    "compatibility": {
+      "dsh": ">=0.2.1 <0.3.0-0",
+      "node": ">=20"
+    },
+    "permissions": {}
+  },
+  "engines": {
+    "dsh": ">=0.2.1 <0.3.0-0",
+    "node": ">=20"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "agent-teams",
+    "sidebar",
+    "toggle",
+    "web-ui"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "test": "node test/selftest.mjs"
+  }
+}

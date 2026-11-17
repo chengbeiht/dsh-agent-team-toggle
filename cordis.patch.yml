@@ -1,0 +1,4 @@
+# dsh-agent-team-toggle bundle patch: one client-facing row over the Web profile.
+- insert:
+    - id: agent-team-toggle
+      name: dsh-agent-team-toggle
