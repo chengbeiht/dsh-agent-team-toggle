@@ -29,32 +29,24 @@ npm view dsh-agent-team-toggle version --prefer-online
 - npm 页面提示 bypass 2FA token 从 2027-01 起限制直接发布；后续发布建议启用 TOTP 或 trusted publishing。
 - `npm view` 可能读到旧缓存；以 `--prefer-online` 或 registry 的 `?t=` 查询为准。
 
-## 2. 建 GitHub 仓库并打 Release
+## 2. GitHub 仓库
 
-```sh
-git init
-git add .
-git commit -m "dsh-agent-team-toggle 1.0.0"
-git branch -M main
-git remote add origin https://github.com/<owner>/dsh-agent-team-toggle.git
-git push -u origin main
-git tag v1.0.0
-git push origin v1.0.0
-```
+- 仓库：<https://github.com/chengbeiht/dsh-agent-team-toggle>
+- 默认分支：`main`
+- 标签：`v1.0.0`
+- 提交身份：`chengbeiht <chengbeiht@users.noreply.github.com>`
 
-在 GitHub 上创建 `v1.0.0` Release，可附上 `dsh-agent-team-toggle-1.0.0.tgz`。npm 已发布，这一步只作为备用安装源。
-
-> 当前机器直连 `github.com` 超时（`ERR_CONNECTION_TIMED_OUT`），且没有 `gh`/git 凭据；这一步需要在能访问 GitHub 的机器/代理上完成。
+已推送源码、README、LICENSE、`cordis.patch.yml` 和标签。
 
 ## 3. 提交市场条目
 
-Fork [awesome-dsh-plugin/awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin)，在 README 的 **UI Enhancements** 分组中按字母序加一行（把 `<owner>` 换成实际账号）：
+已提交 PR：
 
-```md
-- [<owner>/dsh-agent-team-toggle](https://github.com/<owner>/dsh-agent-team-toggle) - One-click Agent Teams on/off switch in the DSH sidebar footer, above the balance card; reflects live state, busy/failure, and restart-required notices.
-```
+- PR：<https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/16371>
+- 分支：`chengbeiht:add-dsh-agent-team-toggle`
+- 条目位于 **UI Enhancements** 分组，按字母序插入在 `chendefine/dsh-composer-markdown` 之后、`ChengX0721/dsh-client-ui-skin-alice-greyrat` 之前。
 
-然后向上游提 PR。维护者合并后，`awesome-dsh-plugin.com` 与 `dsh-plugin-catalog` 会自动生成条目，市场 Discover 中即可搜索到。
+维护者合并后，`awesome-dsh-plugin.com` 与 `dsh-plugin-catalog` 会自动生成条目，市场 Discover 中即可搜索到。
 
 ## 4. 本机自测安装
 
@@ -68,9 +60,9 @@ dsh plugin --profile desktop add D:/AI/DSH/dsh-agent-team-toggle
 
 - 插件源码、测试、打包文件已就绪。
 - npm：`dsh-agent-team-toggle@1.0.0` **已发布**，registry 200，latest = 1.0.0。
-- 发布用临时 bypass 2FA token 已撤销。
-- GitHub：直连超时；未创建仓库、未提交 PR。
-- 插件市场 listing：仍待提交 awesome-dsh-plugin PR；**尚未出现在市场**。
+- GitHub：仓库已创建，`main` 和 `v1.0.0` 已推送。
+- 插件市场：PR #16371 已提交，等待维护者合并；**尚未出现在市场**。
+- 发布用临时 bypass 2FA token 已撤销；GitHub PAT 用完即撤销。
 
 ## 本地产物
 
